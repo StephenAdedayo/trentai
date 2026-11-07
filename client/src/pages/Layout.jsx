@@ -20,7 +20,7 @@ const Layout = () => {
       <nav className='w-full px-8 min-h-14 flex items-center justify-between border-b border-gray-200'>
       <img src={assets.logo} alt="logo" className='cursor-pointer w-32 sm:44' onClick={() => navigate('/')}/>
       {sidebar ? <X onClick={() => setSidebar(false)} className='size-6 text-gray-600 sm:hidden'/> : (
-        <Menu onClick={() => setSidebar(false)} className='size-6 text-gray-600 sm:hidden'/>
+        <Menu onClick={() => setSidebar(true)} className='size-6 text-gray-600 sm:hidden'/>
       )}
       </nav>
 

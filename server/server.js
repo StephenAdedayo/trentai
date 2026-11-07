@@ -20,7 +20,7 @@ app.use("/api/user", userRouter)
 
 app.get("/", (req, res) => res.send("API working"))
 
-// const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
-// app.listen(PORT, () => console.log("Server running on port", PORT))
-export default app
+app.listen(PORT, () => console.log("Server running on port", PORT))
+// export default app

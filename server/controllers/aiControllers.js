@@ -21,7 +21,7 @@ export const generateArticle = async (req, res) => {
     if (plan !== "premium" && free_usage >= 10) {
       return res.status(400).json({
         success: false,
-        message: "Limit already reached, please upgrade to continue",
+        message: "Limit already reached, please upgrade to continue"
       });
     }
 
@@ -69,7 +69,7 @@ export const generateBlogTitle = async (req, res) => {
     if (plan !== "premium" && free_usage >= 10) {
       return res.status(400).json({
         success: false,
-        message: "Limit already reached, please upgrade to continue",
+        message: "Limit already reached, please upgrade to continue"
       });
     }
 
@@ -115,7 +115,7 @@ export const generateImage = async (req, res) => {
     if (plan !== "premium") {
       return res.status(400).json({
         success: false,
-        message: "This feature is only available for premium subscriptions",
+        message: "This feature is only available for premium subscriptions"
       });
     }
 
@@ -159,9 +159,11 @@ export const removeImageBackground = async (req, res) => {
     const plan = req.plan;
 
     if (plan !== "premium") {
-      return res.status(400).json({
+        fs.unlink(image.path, () => {})
+
+      return res.status(403).json({
         success: false,
-        message: "This feature is only available for premium subscriptions",
+        message: "This feature is only available for premium subscriptions"
       });
     }
 
@@ -197,7 +199,7 @@ export const removeImageObject = async (req, res) => {
     if (plan !== "premium") {
       return res.status(400).json({
         success: false,
-        message: "This feature is only available for premium subscriptions",
+        message: "This feature is only available for premium subscriptions"
       });
     }
 
@@ -235,7 +237,7 @@ export const resumeReview = async (req, res) => {
     if (plan !== "premium") {
       return res.status(400).json({
         success: false,
-        message: "This feature is only available for premium subscriptions",
+        message: "This feature is only available for premium subscriptions"
       });
     }
 
