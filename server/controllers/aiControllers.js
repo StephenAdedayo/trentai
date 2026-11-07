@@ -4,7 +4,6 @@ import { clerkClient } from "@clerk/express";
 import axios from "axios";
 import { v2 as cloudinary } from "cloudinary";
 import fs from 'fs'
-import { PDFParse } from "pdf-parse"
 
 
 const AI = new OpenAI({
