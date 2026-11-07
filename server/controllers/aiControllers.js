@@ -226,6 +226,9 @@ export const removeImageObject = async (req, res) => {
 
 export const resumeReview = async (req, res) => {
   try {
+     const { default: pdf } = await import("pdf-parse/lib/pdf-parse.js")
+
+        
     const { userId } = await req.auth();
     const resume = req.file;
     const plan = req.plan;
@@ -242,11 +245,8 @@ export const resumeReview = async (req, res) => {
     }
 
     const dataBuffer = fs.readFileSync(resume.path)
-const parser = new PDFParse({ data: dataBuffer })
-const result = await parser.getText()
-await parser.destroy()
-
-const text = result.text
+      const pdfData = await pdf(dataBuffer)
+      const text = pdfData.text
 
     const prompt = `Review the following resume and provide constructive feedback on it's strengths, weaknesses and areas for improvement. Resume content:\n\n${text}`
 
